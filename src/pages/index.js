@@ -4,11 +4,15 @@ import Newsletter from "@/components/Newsletter";
 import ResourceHighlight from "@/components/ResourceHighlight";
 import ResourceList from "@/components/ResourceList";
 import Layout from "@/components/Layout";
-// import { resources } from "@/api/data";
+import { useEffect } from "react";
 
-export async function getStaticProps() {
-  const resData = await fetch("http://localhost:3000/api/resources");
+// called on EVERY visit
+export async function getServerSideProps() {
+  const resData = await fetch("http://localhost:3001/resources");
   const data = await resData.json();
+
+  console.log("Logged: getServerSideProps");
+
   return {
     props: {
       resources: data,
@@ -17,6 +21,10 @@ export async function getStaticProps() {
 }
 
 export default function Home({ resources }) {
+  useEffect(() => {
+    fetch("http://localhost:3000/api/resources");
+  }, []);
+
   return (
     <Layout>
       <ResourceHighlight resources={resources} />
