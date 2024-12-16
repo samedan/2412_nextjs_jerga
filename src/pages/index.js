@@ -22,7 +22,7 @@ export async function getServerSideProps() {
 
 export default function Home({ resources }) {
   useEffect(() => {
-    fetch("http://localhost:3000/api/resources");
+    fetch("http://localhost:3001/resources");
   }, []);
 
   return (
