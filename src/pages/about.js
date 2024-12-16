@@ -1,5 +1,12 @@
+import Layout from "@/components/Layout";
+import NavBar from "@/components/NavBar";
+
 function About() {
-  return <h1>Abiout page</h1>;
+  return (
+    <Layout>
+      <h1>About page</h1>
+    </Layout>
+  );
 }
 
 export default About;
