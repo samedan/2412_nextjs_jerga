@@ -11,6 +11,18 @@ const DEFAULT_DATA = {
 
 const ResourceCreatePage = () => {
   const [form, setForm] = useState(DEFAULT_DATA);
+
+  const submitForm = () => {
+    alert(JSON.stringify(form));
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setForm({ ...form, [name]: value });
+  };
+
+  const resetForm = () => setForm(DEFAULT_DATA);
+
   return (
     <Layout>
       <div className="container">
@@ -25,6 +37,8 @@ const ResourceCreatePage = () => {
                   <div className="control">
                     <input
                       value={form.title}
+                      name="title"
+                      onChange={handleChange}
                       className="input"
                       type="text"
                       placeholder="Learn NextJS and Sanity IO"
@@ -38,6 +52,8 @@ const ResourceCreatePage = () => {
                   <div className="control">
                     <textarea
                       value={form.description}
+                      name="description"
+                      onChange={handleChange}
                       className="textarea"
                       placeholder="Learn these technologies because they are popular and enable better SEO."
                     ></textarea>
@@ -49,6 +65,8 @@ const ResourceCreatePage = () => {
                   <div className="control">
                     <input
                       value={form.link}
+                      name="link"
+                      onChange={handleChange}
                       className="input"
                       type="text"
                       placeholder="https://articole-smart.eu"
@@ -60,7 +78,11 @@ const ResourceCreatePage = () => {
                   <label className="label">Priority</label>
                   <div className="control">
                     <div className="select">
-                      <select value={form.priority}>
+                      <select
+                        value={form.priority}
+                        name="priority"
+                        onChange={handleChange}
+                      >
                         <option>1</option>
                         <option>2</option>
                         <option>3</option>
@@ -74,6 +96,8 @@ const ResourceCreatePage = () => {
                   <div className="control">
                     <input
                       value={form.timeToFinish}
+                      name="timeToFinish"
+                      onChange={handleChange}
                       className="input"
                       type="number"
                       placeholder="60 (time is in minutes)"
@@ -85,10 +109,22 @@ const ResourceCreatePage = () => {
                 {/* Buttons */}
                 <div className="field is-grouped">
                   <div className="control">
-                    <button className="button is-link">Submit</button>
+                    <button
+                      className="button is-link"
+                      onClick={submitForm}
+                      type="button"
+                    >
+                      Submit
+                    </button>
                   </div>
                   <div className="control">
-                    <button className="button is-link is-light">Cancel</button>
+                    <button
+                      type="button"
+                      onClick={resetForm}
+                      className="button is-link is-light"
+                    >
+                      Reset form
+                    </button>
                   </div>
                 </div>
                 {/* End Buttons */}
