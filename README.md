@@ -21,3 +21,7 @@
 ### Individual resource page
 
 > getServerSideProps({ params, query })
+
+### getInitialProps
+
+# Called both on Server as SPA

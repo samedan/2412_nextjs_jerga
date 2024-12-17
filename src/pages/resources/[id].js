@@ -32,7 +32,6 @@ export async function getServerSideProps({ params, query }) {
     `http://localhost:3001/api/resources/${params.id}`
   );
   const data = await dataRes.json();
-
   return {
     props: {
       // resourceId: params.id, // [id].js
@@ -41,5 +40,15 @@ export async function getServerSideProps({ params, query }) {
     },
   };
 }
+
+// ResourceDetail.getInitialProps = async ({ query }) => {
+//   const dataRes = await fetch(
+//     `http://localhost:3001/api/resources/${query.id}`
+//   );
+//   const data = await dataRes.json();
+//   return {
+//     resource: data,
+//   };
+// };
 
 export default ResourceDetail;
