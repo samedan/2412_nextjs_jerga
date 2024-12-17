@@ -8,7 +8,7 @@ import { useEffect } from "react";
 
 // called on EVERY visit
 export async function getServerSideProps() {
-  const resData = await fetch("http://localhost:3001/resources");
+  const resData = await fetch("http://localhost:3001/api/resources");
   const data = await resData.json();
 
   console.log("Logged: getServerSideProps");
@@ -21,9 +21,9 @@ export async function getServerSideProps() {
 }
 
 export default function Home({ resources }) {
-  useEffect(() => {
-    fetch("http://localhost:3001/resources");
-  }, []);
+  // useEffect(() => {
+  //   fetch("http://localhost:3001/resources");
+  // }, []);
 
   return (
     <Layout>

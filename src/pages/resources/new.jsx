@@ -1,5 +1,6 @@
 import Layout from "@/components/Layout";
 import { useState } from "react";
+import axios from "axios";
 
 const DEFAULT_DATA = {
   title: "",
@@ -13,7 +14,8 @@ const ResourceCreatePage = () => {
   const [form, setForm] = useState(DEFAULT_DATA);
 
   const submitForm = () => {
-    alert(JSON.stringify(form));
+    // alert(JSON.stringify(form));
+    axios.post("/api/resources", form);
   };
 
   const handleChange = (e) => {
