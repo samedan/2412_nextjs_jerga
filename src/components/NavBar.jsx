@@ -6,7 +6,7 @@ const NavBar = () => {
       <nav className="navbar">
         <div className="container">
           <div className="navbar-brand">
-            <Link className="navbar-item" href="../">
+            <Link className="navbar-item" href="/">
               <h1>Content manager</h1>
             </Link>
             <span className="navbar-burger burger" data-target="navbarMenu">
