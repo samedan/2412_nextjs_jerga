@@ -25,3 +25,9 @@
 ### getInitialProps
 
 # Called both on Server as SPA
+
+### getStaticPaths + getStaticProps
+
+# getStaticPaths
+
+> [{ params: { id: '1734443554348' } },...]

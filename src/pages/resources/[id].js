@@ -27,15 +27,40 @@ const ResourceDetail = ({ resource }) => {
 };
 
 // export function getServerSideProps(context) {
-export async function getServerSideProps({ params, query }) {
+// export async function getServerSideProps({ params, query }) {
+//   const dataRes = await fetch(
+//     `http://localhost:3001/api/resources/${params.id}`
+//   );
+//   const data = await dataRes.json();
+//   return {
+//     props: {
+//       // resourceId: params.id, // [id].js
+//       // resourceId: query.id,
+//       resource: data,
+//     },
+//   };
+// }
+
+export async function getStaticPaths() {
+  const dataRes = await fetch(`http://localhost:3001/api/resources`);
+  const data = await dataRes.json();
+  const paths = data.map((resource) => {
+    return {
+      params: { id: resource.id.toString() },
+    };
+  });
+  return {
+    paths: paths,
+    fallback: false, // 404 page
+  };
+}
+export async function getStaticProps({ params, query }) {
   const dataRes = await fetch(
     `http://localhost:3001/api/resources/${params.id}`
   );
   const data = await dataRes.json();
   return {
     props: {
-      // resourceId: params.id, // [id].js
-      // resourceId: query.id,
       resource: data,
     },
   };
