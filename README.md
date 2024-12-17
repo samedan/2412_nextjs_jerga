@@ -31,3 +31,19 @@
 # getStaticPaths
 
 > [{ params: { id: '1734443554348' } },...]
+
+### fallback in getStaticPaths : Test pages
+
+## If not found (built page), it will be built on folder: .next/server
+
+> npm run build
+> npm start
+
+# [id].js
+
+> getStaticPaths -> fallback: true,
+> if (router.isFallback) {return <div>Loading Data</div>; }
+
+### Revalidate -> updates built page after X time
+
+> getStaticProps -> revalidate: 1 (in seconds)

@@ -1,6 +1,13 @@
 import Layout from "@/components/Layout";
+import { useRouter } from "next/router";
 
 const ResourceDetail = ({ resource }) => {
+  const router = useRouter();
+
+  // if (router.isFallback) {
+  //   return <div>Loading Data</div>;
+  // }
+
   return (
     <Layout>
       <section className="hero ">
@@ -63,6 +70,7 @@ export async function getStaticProps({ params, query }) {
     props: {
       resource: data,
     },
+    revalidate: 1,
   };
 }
 
