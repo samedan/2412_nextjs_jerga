@@ -1,4 +1,4 @@
-// import data from "./data.json";
+import axios from "axios";
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default async function (req, res) {
@@ -10,8 +10,18 @@ export default async function (req, res) {
     return res.send(data);
   }
   if (req.method === "POST") {
-    console.log(req.body);
-
-    return res.send("Data received");
+    const { title, description, link, timeToFinish, priority } = req.body;
+    if (!title || !description || !link || !timeToFinish || !priority) {
+      return res.status(422).send("Form data are missing");
+    }
+    try {
+      const axiosRes = await axios.post(
+        "http://localhost:3001/api/resources",
+        req.body
+      );
+      return res.send(axiosRes.data); // return response from server
+    } catch (error) {
+      return status(422).send("Data cannot be stored");
+    }
   }
 }

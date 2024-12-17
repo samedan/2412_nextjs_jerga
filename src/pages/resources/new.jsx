@@ -1,6 +1,7 @@
 import Layout from "@/components/Layout";
 import { useState } from "react";
 import axios from "axios";
+import { useRouter } from "next/router";
 
 const DEFAULT_DATA = {
   title: "",
@@ -12,10 +13,17 @@ const DEFAULT_DATA = {
 
 const ResourceCreatePage = () => {
   const [form, setForm] = useState(DEFAULT_DATA);
+  const router = useRouter();
+  const person = undefined;
 
   const submitForm = () => {
     // alert(JSON.stringify(form));
-    axios.post("/api/resources", form);
+    axios
+      .post("/api/resources", form)
+      .then((_) => router.push("/"))
+      .catch((err) => {
+        alert(err?.response?.data);
+      });
   };
 
   const handleChange = (e) => {
@@ -27,6 +35,7 @@ const ResourceCreatePage = () => {
 
   return (
     <Layout>
+      {person?.name}
       <div className="container">
         <div className="columns">
           <div className="column is-8 is-offset-2">
