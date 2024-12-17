@@ -17,3 +17,7 @@
 # Github Server
 
 > https://github.com/samedan/2412_nextjs_jerga_server_api
+
+### Individual resource page
+
+> getServerSideProps({ params, query })
