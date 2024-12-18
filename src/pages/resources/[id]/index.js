@@ -10,11 +10,11 @@ const ResourceDetail = ({ resource }) => {
   //   return <div>Loading Data</div>;
   // }
 
-  const activateResource = () => {
-    axios
+  const activateResource = async () => {
+    await axios
       .patch("/api/resources", { ...resource, status: "active" })
       .then((_) => alert("resource activated"))
-      .catch((_) => alert("cannot Activate <resource></resource>"));
+      .catch((_) => alert("cannot Activate"));
   };
 
   return (
