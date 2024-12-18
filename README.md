@@ -57,3 +57,5 @@
 # calculate time spent on ActivePage :
 
 > ActiveResource.js -> useEffect -> const updateTimeToFinish
+
+> setInterval, clearInterval

@@ -29,12 +29,19 @@ body {
   padding: 50px;
   text-align: center;
   color: white;
+  heigh: 300px;
 }
 
 .active-resource .resource-name {
   font-size: 30px;
+  heigh: 50px;
 }
 .active-resource .elapsed-time {
   font-size: 64px;
   font-white: bold;
+  heigh: 100px;
+}
+
+.active-resource .time-wrapper {
+  heigh: 100px;
 }

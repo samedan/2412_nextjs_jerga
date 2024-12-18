@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 
 const ActiveResource = () => {
   const [resource, setResource] = useState({});
-  const [seconds, setSeconds] = useState();
+  const [seconds, setSeconds] = useState(0);
 
   useEffect(() => {
     async function fetchActiveResource() {
@@ -38,20 +38,40 @@ const ActiveResource = () => {
     if (seconds < 0) {
       clearInterval(interval);
     }
-    // clean component
+    // unmount / clean component
     return () => clearInterval(interval);
   }, [seconds]);
 
+  // Active Resource exists BOOLean
+  const hasResource = resource && resource.id;
+
   return (
     <div className="active-resource">
-      <h1 className="resource-name">{resource.title}</h1>
+      <h1 className="resource-name">
+        {hasResource ? resource.title : "Loading active resource..."}
+      </h1>
       <div className="time-wrapper">
         {/* <h2 className="elapsed-time">{resource.timeToFinish}</h2> */}
-        <h2 className="elapsed-time">{seconds}</h2>
+        {hasResource &&
+          (seconds > 0 ? (
+            <h2 className="elapsed-time">{seconds}</h2>
+          ) : (
+            <h2 className="elapsed-time">
+              <button className="button is-success">
+                Click and set as Completed
+              </button>
+            </h2>
+          ))}
       </div>
-      <Link href="/" className="button">
-        Go to resource
-      </Link>
+      {hasResource ? (
+        <Link href="/" className="button">
+          Go to resource
+        </Link>
+      ) : (
+        <Link href="/" className="button">
+          Go to resources
+        </Link>
+      )}
     </div>
   );
 };
