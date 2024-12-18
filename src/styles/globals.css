@@ -45,3 +45,14 @@ body {
 .active-resource .time-wrapper {
   heigh: 100px;
 }
+
+/* Tags colors */
+.tag.resource-complete {
+  background-color: #0fd60f !important;
+}
+.tag.resource-inactive {
+  background-color: orange !important;
+}
+.tag.resource-active {
+  background-color: #2d8bff !important;
+}

@@ -45,10 +45,18 @@ const ActiveResource = () => {
   // Active Resource exists BOOLean
   const hasResource = resource && resource.id;
 
+  // click on "Click and Set as Completed"
+  const markCompleteResource = async () => {
+    await axios
+      .patch("/api/resources", { ...resource, status: "complete" })
+      .then((_) => location.reload())
+      .catch((_) => alert("cannot mark complete"));
+  };
+
   return (
     <div className="active-resource">
       <h1 className="resource-name">
-        {hasResource ? resource.title : "Loading active resource..."}
+        {hasResource ? resource.title : "No active resource"}
       </h1>
       <div className="time-wrapper">
         {/* <h2 className="elapsed-time">{resource.timeToFinish}</h2> */}
@@ -57,14 +65,17 @@ const ActiveResource = () => {
             <h2 className="elapsed-time">{seconds}</h2>
           ) : (
             <h2 className="elapsed-time">
-              <button className="button is-success">
+              <button
+                className="button is-success"
+                onClick={markCompleteResource}
+              >
                 Click and set as Completed
               </button>
             </h2>
           ))}
       </div>
       {hasResource ? (
-        <Link href="/" className="button">
+        <Link href={`/resources/${resource.id}`} className="button">
           Go to resource
         </Link>
       ) : (

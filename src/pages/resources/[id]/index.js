@@ -1,5 +1,7 @@
 import Layout from "@/components/Layout";
+import ResourceLabel from "@/components/ResourceLabel";
 import axios from "axios";
+import moment from "moment";
 import Link from "next/link";
 // import { useRouter } from "next/router";
 
@@ -27,23 +29,30 @@ const ResourceDetail = ({ resource }) => {
                 <div className="column is-8 is-offset-2">
                   <div className="content is-medium">
                     <h2 className="subtitle is-4">
-                      date: {resource.createdAt}
+                      <ResourceLabel status={resource.status} />
+                      {/* Date: {moment(resource.createdAt).format("LLL")} */}
+                      Date:{" "}
+                      {moment(resource.createdAt).format("MMMM Do YYYY, h:mm")}
                     </h2>
                     <h1 className="title">{resource.title}</h1>
                     <p>{resource.description}</p>
                     <p>Time to finish: {resource.timeToFinish} minutes</p>
-                    <Link
-                      href={`/resources/${resource.id}/edit`}
-                      className="button is-warning"
-                    >
-                      Update
-                    </Link>
-                    <button
-                      className="button is-success ml-1"
-                      onClick={activateResource}
-                    >
-                      Activate
-                    </button>
+                    {resource.status === "inactive" && (
+                      <>
+                        <Link
+                          href={`/resources/${resource.id}/edit`}
+                          className="button is-warning"
+                        >
+                          Update
+                        </Link>
+                        <button
+                          className="button is-success ml-1"
+                          onClick={activateResource}
+                        >
+                          Activate
+                        </button>
+                      </>
+                    )}
                   </div>
                 </div>
               </div>
