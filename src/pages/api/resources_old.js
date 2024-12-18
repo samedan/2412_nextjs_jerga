@@ -19,7 +19,7 @@ export default async function (req, res) {
     const url =
       req.method === "POST"
         ? "http://localhost:3001/api/resources"
-        : `http://localhost:3001/api/resources/` + id;
+        : `http://localhost:3001/api/resources` + id;
 
     // console.log("req is going to: ".url);
     // console.log("request method is : ".req.method);

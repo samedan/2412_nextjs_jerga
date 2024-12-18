@@ -8,6 +8,10 @@
 
 > https://bulma.io/documentation/form/general/
 
+### Routes file
+
+> pages/api/resources.js
+
 ### NextJS getStaticProps
 
 > index.js -> export async function getStaticProps()
