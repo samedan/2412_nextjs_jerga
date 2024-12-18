@@ -31,6 +31,7 @@ const ResourceDetail = ({ resource }) => {
                     </h2>
                     <h1 className="title">{resource.title}</h1>
                     <p>{resource.description}</p>
+                    <p>Time to finish: {resource.timeToFinish} minutes</p>
                     <Link
                       href={`/resources/${resource.id}/edit`}
                       className="button is-warning"
