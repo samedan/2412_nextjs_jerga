@@ -1,4 +1,5 @@
 // const { default: NavBar } = require("./NavBar");
+import ActiveResource from "./ActiveResource";
 import NavBar from "./NavBar";
 
 export default function Layout({ children }) {
@@ -6,6 +7,7 @@ export default function Layout({ children }) {
     <>
       <main>
         <NavBar />
+        <ActiveResource />
         {children}
       </main>
     </>

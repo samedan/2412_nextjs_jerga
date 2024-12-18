@@ -1,4 +1,5 @@
 import Layout from "@/components/Layout";
+import axios from "axios";
 import Link from "next/link";
 // import { useRouter } from "next/router";
 
@@ -8,6 +9,13 @@ const ResourceDetail = ({ resource }) => {
   // if (router.isFallback) {
   //   return <div>Loading Data</div>;
   // }
+
+  const activateResource = () => {
+    axios
+      .patch("/api/resources", { ...resource, status: "active" })
+      .then((_) => alert("resource activated"))
+      .catch((_) => alert("cannot Activate <resource></resource>"));
+  };
 
   return (
     <Layout>
@@ -29,6 +37,12 @@ const ResourceDetail = ({ resource }) => {
                     >
                       Update
                     </Link>
+                    <button
+                      className="button is-success ml-1"
+                      onClick={activateResource}
+                    >
+                      Activate
+                    </button>
                   </div>
                 </div>
               </div>
