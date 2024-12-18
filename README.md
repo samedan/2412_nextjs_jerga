@@ -51,3 +51,9 @@
 ### Revalidate -> updates built page after X time
 
 > getStaticProps -> revalidate: 1 (in seconds)
+
+### Moment
+
+# calculate time spent on ActivePage :
+
+> ActiveResource.js -> useEffect -> const updateTimeToFinish
