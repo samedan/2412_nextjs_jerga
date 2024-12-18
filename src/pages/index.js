@@ -4,11 +4,10 @@ import Newsletter from "@/components/Newsletter";
 import ResourceHighlight from "@/components/ResourceHighlight";
 import ResourceList from "@/components/ResourceList";
 import Layout from "@/components/Layout";
-import { useEffect } from "react";
 
 // called on EVERY visit
 export async function getServerSideProps() {
-  const resData = await fetch("http://localhost:3001/api/resources");
+  const resData = await fetch(`${process.env.API_URL}/resources`);
   const data = await resData.json();
 
   console.log(
@@ -27,10 +26,7 @@ export async function getServerSideProps() {
 }
 
 export default function Home({ resources }) {
-  // useEffect(() => {
-  //   fetch("http://localhost:3001/resources");
-  // }, []);
-
+  console.log(process.env.API_URL);
   return (
     <Layout>
       <ResourceHighlight resources={resources} />
